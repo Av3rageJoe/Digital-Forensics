@@ -39,13 +39,13 @@ In addition to these individual profiling will also show who regularly shares da
 
 Flow record processing systems have four main components:
       
-      1. Sensor - 
+      1. Sensor
             A sensor is a device used to monitor the flow of traffic on any given segment. It can be used to extract important pieces of information to a flow record
-      2. Collector - 
+      2. Collector
             A collector is one or more servers that are configured to listen on the network for flow record data and then store it to a hard drive.
-      3. Aggregator - 
+      3. Aggregator
             If multiple collectors are used, an aggregator is used to aggergate the data on on central server which can be used for analysis.
-      4. Analysis - 
+      4. Analysis
             Once the flow record has been exported and stored, it can be analysed using several tools of the investigators choosing.
             
 ## Sensor Types
@@ -68,9 +68,9 @@ The following factors should be considered when placing a sensor:
 
 Factors that should be considered during placement for these devices should be:
         
-        1. Congestion - 
+        1. Congestion
               When flow records are created, they generate network traffic which can cause congestion
-        2. Security - 
+        2. Security 
               * Can records be sniffed or modified in transit?
               * Export flow records on seperate VLAN if possible
               * Isolate physical cables
@@ -97,9 +97,75 @@ During analysis, an investigator will want to identify the IP address of comprom
   
 **Baselining** </br>
   Identifying what is normal traffic given the context of the environment
+  The investigator should build a profile of what "normal" traffic looks like on the network
+  General trends over a period of time can eb used to establish this.
+  When baselining an individual, the historical pattern can be sued to identify any anomalous behaviour. Most flow patterns will change dramatically if a host is compromised or under attack
+  
   
 **Dirty Values** </br>
   There might be an unusual port that is not often used. Or a port claiming to be of a different protocol than ti actually is
+  Dirty values could include:
   
+        1. IP addresses
+        2. Ports
+        3. Protocols
+     
 **Activity Pattern Matching** </br>
   Might indicate the behaviour of an already known malware or attack
+  Things to check during pattern matching:
+  
+        1. IP Address
+          Does the IP belong internally or is it from a WAN?
+          What is the counrty of Origin?
+          Who are they registered to?
+        2. Ports
+          Are the ports assigned and/or well known (linked to specific applications)
+          Is the system scanning or being scanned?
+        3. Protocols and Flags
+          Layer 3 and 4 are often tracked in flow record data.
+               Connection attemps
+               Successful port scans
+               Data transfers
+        4. Directionality
+          Is data coming in (downloaded) or going out (uploaded)?
+        5. Volume of data transferred
+          Lots of small packets can indicate port scanning
+          Large amounts of data usually cause for concern
+          
+          
+## Simple Patterns
+
+Simple patterns and devices/attacks which use such patterns
+
+* Many-to-one IP addresses
+     DDoS attack
+     "Drop box" sata repository on destination IP
+     Email server (at destination)
+
+* One-to-many IP addresses
+     Web server
+     Email server (at source)
+     Spam bot
+     Network port scanning
+
+* Many-to-many IP addresses
+     Peer-to-peer file sharing
+     Widespread port scanning
+     
+* One-to-one IP addresses
+     Targeted attack
+     Routine Server communication
+     
+## Complex patterns
+
+This is the process of matching complex flow record patterns to specific activities.
+
+For example:
+     * TCP SYN port scan
+          * One source IP address
+          * One or more destination IP addresses
+          * Destination port numbers increase incrementally
+          * Volume of packets surpass a specified value within a given period of time
+          * TCP protocol
+          * Outbound protocol flags set to "SYN"
+               * No full TCP connections
