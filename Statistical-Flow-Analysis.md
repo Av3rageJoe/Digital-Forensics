@@ -162,7 +162,7 @@ This is the process of matching complex flow record patterns to specific activit
 
 For example:
 
-* TCP SYN port scan
+     * TCP SYN port scan
           * One source IP address     
           * One or more destination IP addresses
           * Destination port numbers increase incrementally
