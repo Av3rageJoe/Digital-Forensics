@@ -161,6 +161,7 @@ Simple patterns and devices/attacks which use such patterns
 This is the process of matching complex flow record patterns to specific activities.
 
 For example:
+
      * TCP SYN port scan
           * One source IP address
           * One or more destination IP addresses
