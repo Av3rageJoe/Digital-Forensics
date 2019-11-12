@@ -209,7 +209,9 @@ In order to find WAPs, there are several things to look for in the network traff
 ## Rogue WAP evasion techniques 
 
 You can change the channel. WAPs broadcast on channels, but can be configured to broadcast an alternative channels to evade detection.
+
 You can use Greenfield mode. This is when you limit the AP to only accept 802.11ac/n channels.
+
 Another method is Wireless Port Knocking. This is when a rogue WAP must receive a packet with a preconfigured SSID. Once this packet is received, it awakens and sets itself to master mode. When it is not in master mode, it is silent and therefore cannot be detected by common wireless scanning tools.
 
 ## WEP Cracking
