@@ -178,3 +178,40 @@ Volatile Evidence:
 
 In order for the wireless card to be able to gather evidence it must have a Monitor mode. Alternatively, a separate device can be used for monitoring, such as the AirPcap USB. This USB will monitor layer 2 wifi. It runs on windows and can be used to decrypt WEPs.
 Information that can be gathered through a monitoring device are the broadcast SSIDs, WAP MAC addresses, supported encryption/authentication algorithms and associated client MAC addresses
+
+### Efficient analysis
+
+* Are there any beacons in the wireless traffic? A beacon is a management frame which is transmitted periodically to announce the presence of a wireless WAN
+* Are there any probe repsonses? When a probe request is made, a machine is asking for information from a specific access point, or all access points. The access points then send out a probe response 
+* Can all of the BSSIDs/SSIDs be found from the associated/authenticated network traffic?
+* Can you find the malicious traffic? If so, what does it look like?
+* Is the captured traffic encrypted using WPA/WEP? If so, is anyone trying to break it?
+
+In order to find WAPs, there are several things to look for in the network traffic:
+
+* Beacon frames - management frames with subtype 0x08
+* Probe response frames - management frames with subtype 0x05
+* WAPs set ESS to 1 and IBSS to 0 when broadcasting these frames. An ESS is one or more interconnected BSSs. An IBSS is a single (or independent) BSS
+
+## Types of Attacks
+
+### Common types of attacks
+
+* Sniffer
+    - This is when an attacker eavesdrops on the network and gathers/monitors its traffic
+* Rogue Wireless Access Points
+    - Theres are unauthorised wireless devices that extend the LANs, norally for an end users convenience. This requires an insider to perform.
+* The Evil Twin Attack
+    - An attacker sets up a WAP with the same SSID as a legitimate one. Usually they will then DoS the legitimate one. This way a users device will try and reconnect to the 'Evil Twin'
+* WEP Cracking
+    - An attacker attempts to recover the WEP encryption key to gain unathorised acces to a WEP-encrypted network
+
+## Rogue WAP evasion techniques 
+
+You can change the channel. WAPs broadcast on channels, but can be configured to broadcast an alternative channels to evade detection.
+You can use Greenfield mode. This is when you limit the AP to only accept 802.11ac/n channels.
+Another method is Wireless Port Knocking. This is when a rogue WAP must receive a packet with a preconfigured SSID. Once this packet is received, it awakens and sets itself to master mode. When it is not in master mode, it is silent and therefore cannot be detected by common wireless scanning tools.
+
+## WEP Cracking
+
+WEP cracking occurs when there are flaws in the protocol and encryption method. Using ARP packets, the attacker gathers several thousand packets of network traffic and then uses these packets to guess the WEP key.
