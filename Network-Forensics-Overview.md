@@ -75,4 +75,3 @@ The TCP header is then removed and the get request is handed to the web server a
 
 The process would be repeated every time over the network
 
-## TCP/IP
