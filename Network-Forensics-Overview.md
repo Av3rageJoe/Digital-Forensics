@@ -44,7 +44,7 @@ OSI stands for Open Systems Interconnection, and is the standard used for transf
 
 Each layer defines a different stage that data must go through to travel from one device on a network to another. Data is encapsulated to enable transmission between each layer.
 
-No matter what layer of the OSI model, when data is transmitted it is compromised of a header followed by data. 
+No matter what layer of the OSI model, when data is transmitted, the packet consists of a header followed by data. 
 
 ![How data changes per each layer of the OSI model](https://github.com/Av3rageJoe/Digital-Forensics/blob/master/Images/Screenshot%202019-11-13%20at%2022.07.51.png)
 
