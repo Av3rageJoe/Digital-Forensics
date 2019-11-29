@@ -40,7 +40,7 @@ Protocols are reccommended rules to enable effective communication. For a DF inv
 
 ### OSI Model
 
-OSI stands for Open Systems Interconnection, and is the standard used for transferring data across a network. It is compromised of seven layers, which are Application, Presentation, Session, Transport, Network, Data Link, and Physical. 
+OSI stands for Open Systems Interconnection, and is the standard used for transferring data across a network. It is comprised of seven layers, which are Application, Presentation, Session, Transport, Network, Data Link, and Physical. 
 
 Each layer defines a different stage that data must go through to travel from one device on a network to another. Data is encapsulated to enable transmission between each layer.
 
